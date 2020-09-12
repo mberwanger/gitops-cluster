@@ -1,0 +1,11 @@
+apiVersion: source.toolkit.fluxcd.io/v1alpha1
+kind: GitRepository
+metadata:
+  name: podinfo
+spec:
+  interval: 1m0s
+  ref:
+    branch: devel
+  secretRef:
+    name: gitops-system
+  url: ssh://git@github.com/mberwanger/gitops-cluster1
