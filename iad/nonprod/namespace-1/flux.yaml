@@ -25,6 +25,9 @@ kind: Kustomization
 metadata:
   name: namespace1-iad-nonprod
 spec:
+  serviceAccount:
+    name: gitops-namespace1-reconciler
+    namespace: gitops-namespace1
   interval: 5m
   path: ./iad/nonprod/namespace-1
   prune: true
