@@ -6,4 +6,3 @@ commonLabels:
   namespaceLabel2: someValue2
 resources:
   - namespace.yaml
-  - flux.yaml
