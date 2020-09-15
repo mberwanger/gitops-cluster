@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: namespace-1
 commonLabels:
   namespaceLabel1: someValue1
-  namespaceLabel2: someValue2
 resources:
   - namespace.yaml
   - flux.yaml

@@ -26,7 +26,7 @@ metadata:
   name: namespace1-iad-nonprod
 spec:
   interval: 5m
-  path: ./iad/nonprod/
+  path: ./iad/nonprod/namespace-1
   prune: true
   sourceRef:
     kind: GitRepository
