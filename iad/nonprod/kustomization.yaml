@@ -5,5 +5,5 @@ commonLabels:
   clusterLabel2: someValue2
 resources:
   - ../base/cluster
-  - ../namespace-1
-  - ../namespace-2
+  - ./namespace-1
+  - ./namespace-2
