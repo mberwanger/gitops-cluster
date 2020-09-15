@@ -2,8 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 commonLabels:
   clusterLabel1: someValue1
-  clusterLabel2: someValue2
 resources:
   - ../base/cluster
-  - ./namespace-1
-  - ./namespace-2
+  - namespace-1
+  - namespace-2
