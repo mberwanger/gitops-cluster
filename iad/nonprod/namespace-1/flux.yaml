@@ -16,9 +16,6 @@ spec:
   interval: 1m0s
   ref:
     branch: master
-  serviceAccount:
-    name: namespace1-reconciler
-    namespace: namespace1
   secretRef:
     name: namespace1-repo
   url: ssh://git@github.com/mberwanger/gitops-team1
