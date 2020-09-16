@@ -1,5 +1,3 @@
-# Source: datadog/templates/secrets.yaml
-# API Key
 apiVersion: v1
 kind: Secret
 metadata:
@@ -7,11 +5,8 @@ metadata:
   labels: {}
 type: Opaque
 data:
-  api-key: PUT_YOUR_BASE64_ENCODED_API_KEY_HERE
-
-# APP Key
+  api-key: UFVUX1lPVVJfQkFTRTY0X0VOQ09ERURfQVBJX0tFWV9IRVJF
 ---
-# Source: datadog/templates/install_info-configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -27,7 +22,6 @@ data:
       tool_version: kubernetes sample manifests
       installer_version: kubernetes sample manifests
 ---
-# Source: datadog/templates/daemonset.yaml
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -188,7 +182,3 @@ spec:
     rollingUpdate:
       maxUnavailable: 10%
     type: RollingUpdate
-
-# Source: datadog/templates/containers-common-env.yaml
-# The purpose of this template is to define a minimal set of environment
-# variables required to operate dedicated containers in the daemonset
