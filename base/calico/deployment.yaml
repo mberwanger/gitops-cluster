@@ -78,9 +78,7 @@ spec:
               port: 9098
               host: localhost
             periodSeconds: 10
-
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:

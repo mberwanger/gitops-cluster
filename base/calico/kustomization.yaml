@@ -6,6 +6,6 @@ resources:
   - service_account.yaml
   - config_map.yaml
   - rbac.yaml
-  # - deployment.yaml
-  # - pod_disruption_budget.yaml
-  # - service.yaml
+  - deployment.yaml
+  - pod_disruption_budget.yaml
+  - service.yaml

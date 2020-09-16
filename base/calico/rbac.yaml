@@ -142,9 +142,7 @@ subjects:
   - kind: ServiceAccount
     name: calico-node
     namespace: kube-system
-
 ---
-
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -153,9 +151,7 @@ rules:
   - apiGroups: [""]
     resources: ["nodes"]
     verbs: ["watch", "list"]
-
 ---
-
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -168,9 +164,7 @@ subjects:
   - kind: ServiceAccount
     name: typha-cpha
     namespace: kube-system
-
 ---
-
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -183,9 +177,7 @@ rules:
   - apiGroups: ["extensions", "apps"]
     resources: ["deployments/scale"]
     verbs: ["get", "update"]
-
 ---
-
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
