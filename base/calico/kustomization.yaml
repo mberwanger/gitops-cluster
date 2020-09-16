@@ -3,9 +3,9 @@ kind: Kustomization
 resources:
   - crd.yaml
   - config_map.yaml
-  - rbac.yaml
-  - service_account.yaml
-  - daemon_set.yaml
-  - deployment.yaml
-  - pod_disruption_budget.yaml
-  - service.yaml
+  # - rbac.yaml
+  # - service_account.yaml
+  # - daemon_set.yaml
+  # - deployment.yaml
+  # - pod_disruption_budget.yaml
+  # - service.yaml
