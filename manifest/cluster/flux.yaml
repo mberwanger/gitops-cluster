@@ -17,7 +17,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: devel
+    branch: master
   secretRef:
     name: gitops-system
   url: ssh://git@github.com/mberwanger/gitops-cluster1
