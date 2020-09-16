@@ -1,9 +1,9 @@
 # gitops-cluster1
 
-*This serves as a proof of concept for amulti-tenant cluster managed with Git, Flux v2 and Kustomize*
+*This serves as a proof of concept for a multi-tenant cluster managed with Git, Flux v2 and Kustomize*
 
 
-Cluster wide operations are performed by the cluster administrators while the namespace scoped operations are performed by various teams each with its own Git repository. That means a team member, that's not a cluster admin, can't create namespaces, custom resources definitions or change something in another team namespace.
+The goal is to have cluster wide operations performed by the cluster administrators while the namespace scoped operations are performed by various teams each with its own Git repository. That means a team member, that's not a cluster admin, can't create namespaces, custom resources definitions or change something in another team namespace.
 
 ## Installation
 
@@ -49,7 +49,7 @@ replicaset.apps/notification-controller-77fdbd5c4b   1         1         1      
 replicaset.apps/source-controller-758cc7d4cf         1         1         1       24m
 ```
 
-We also created two Flux custom resources, a GitRepository that fetches this repo from GitHub and a Kustomization resource that builds, and applies kustomization files in the iad/nonprod directory
+We also created two Flux custom resources, a GitRepository that fetches this repo from GitHub and a Kustomization resource that builds and applies kustomization files in the iad/nonprod directory
 
 ```
 $ kubectl get gitrepositories.source.toolkit.fluxcd.io -n gitops-system
@@ -61,7 +61,7 @@ NAME               READY   STATUS                                               
 cluster1-nonprod   True    Applied revision: master/e4105daeb4e5224101591e9dbee0f7bfb8063fe7   15m
 ```
 
-Repository structure:
+In this POC, its a one to one mapping between the cluster git repository and the AWS account. This repository has the following structure:
 
 ```
 ├── base
@@ -87,12 +87,26 @@ Repository structure:
     └── ...
 ```
 
-base
+**/base:** contains a set of resources and associated customizations that can be reused in the cluster.
 
-region
+**/{region}:** top level directory for a region.
 
-cluster
+**/{region}/common:** contains configurations that span all clusters in the region
 
-common
+**/{region}/{cluster}:** top level directory for cluster within region
 
-manifest
+**/{region}/{cluster}/cluster:** contains configurations that are specific for this cluster in the region. We are just including the region's common configurations, but it can be customized if needed.
+
+**/{region}/{cluster}/{namespace}:** contains the application namespace's configuration files. Namespace-1 is using Flux to watch a team owned [git repository](https://github.com/mberwanger/gitops-team1) and provisions the resource contained within it.
+
+**/manifest:** this directory contains the Kubernetes manifests to you use to bootstrap the cluster with Flux. If the plan is to provision the cluster via terraform this can be move there and the rest of your cluster configuration will live in this repo.
+
+## Metrics
+
+Prometheus is deployed as part of the cluster and metrics can be viewed through port forwarding. Use `kubectl` to map a local port from your computer that will redirect it to a specific port in your cluster.
+
+```
+kubectl port-forward -n kube-system $(kubectl get pods --selector=app=prometheus,component=server -n kube-system --output=jsonpath="{.items..metadata.name}") 9090
+```
+
+Then fire up your favorite browser and navigate to http://localhost:9090/
