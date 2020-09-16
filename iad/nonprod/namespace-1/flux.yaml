@@ -13,7 +13,7 @@ kind: GitRepository
 metadata:
   name: namespace1-repo
 spec:
-  interval: 1m0s
+  interval: 2m30s
   ref:
     branch: master
   secretRef:
@@ -25,7 +25,7 @@ kind: Kustomization
 metadata:
   name: namespace1-kustomization
 spec:
-  interval: 5m
+  interval: 2m30s
   path: ./iad/nonprod/namespace-1
   prune: true
   sourceRef:

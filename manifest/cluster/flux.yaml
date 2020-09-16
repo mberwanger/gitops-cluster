@@ -15,7 +15,7 @@ metadata:
   name: cluster1-repo
   namespace: gitops-system
 spec:
-  interval: 1m0s
+  interval: 5m
   ref:
     branch: master
   secretRef:
