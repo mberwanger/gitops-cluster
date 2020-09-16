@@ -206,6 +206,7 @@ spec:
       - args:
         - --events-addr=http://notification-controller/
         - --enable-leader-election
+        - --watch-all-namespaces
         - --storage-path=/data
         - --log-level=debug
         - --log-json
