@@ -1,0 +1,7 @@
+resources:
+  - namespace.yaml
+  - crd.yaml
+  - rbac.yaml
+  - service.yaml
+  - controller.yaml
+  - network.yaml
