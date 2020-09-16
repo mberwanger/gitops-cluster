@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - ../../../base/defaults
   - ../../../base/psp
+  - ../../../base/calico
   - ../../../base/cron
