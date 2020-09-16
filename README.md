@@ -61,7 +61,7 @@ NAME               READY   STATUS                                               
 cluster1-nonprod   True    Applied revision: master/e4105daeb4e5224101591e9dbee0f7bfb8063fe7   15m
 ```
 
-In this POC, its a one to one mapping between the cluster git repository and the AWS account. This repository has the following structure:
+In this POC, its a one to one mapping between the cluster git repository and the AWS account and it has the following structure:
 
 ```
 ├── base
@@ -87,15 +87,15 @@ In this POC, its a one to one mapping between the cluster git repository and the
     └── ...
 ```
 
-**/base:** contains a set of resources and associated customizations that can be reused in the cluster.
+**/base:** contains a set of resources and associated customizations that can be reused by the cluster.
 
-**/{region}:** top level directory for a region.
+**/{region}:** top level directory for a region (iad|pdx).
 
-**/{region}/common:** contains configurations that span all clusters in the region
+**/{region}/common:** contains configurations that span all clusters in the region.
 
-**/{region}/{cluster}:** top level directory for cluster within region
+**/{region}/{cluster}:** top level directory for cluster within region (nonprod|prod).
 
-**/{region}/{cluster}/cluster:** contains configurations that are specific for this cluster in the region. We are just including the region's common configurations, but it can be customized if needed.
+**/{region}/{cluster}/cluster:** contains configurations that are specific for this cluster in the region. We are just including the region's common configurations, but it can be customized further if needed.
 
 **/{region}/{cluster}/{namespace}:** contains the application namespace's configuration files. Namespace-1 is using Flux to watch a team owned [git repository](https://github.com/mberwanger/gitops-team1) and provisions the resource contained within it.
 
