@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    component: "alertmanager"
+    app: prometheus
+  name: prometheus-alertmanager
+  namespace: kube-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: "2Gi"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    component: "server"
+    app: prometheus
+  name: prometheus-server
+  namespace: kube-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: "8Gi"

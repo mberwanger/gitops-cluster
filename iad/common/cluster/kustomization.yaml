@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../../base/calico
   - ../../../base/metrics-server
+  - ../../../base/prometheus
   - ../../../base/datadog
   - ../../../base/defaults
   - ../../../base/psp
