@@ -1,19 +1,102 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: prometheus
+  name: kube-state-metrics
   namespace: kube-system
   labels:
-    application: prometheus
+    app.kubernetes.io/name: kube-state-metrics
+    helm.sh/chart: "kube-state-metrics-2.8.14"
   annotations:
-    prometheus.io/path: /metrics
-    prometheus.io/port: "9090"
-    prometheus.io/scrape: "true"
+    prometheus.io/scrape: 'true'
 spec:
-  type: ClusterIP
+  type: "ClusterIP"
   ports:
-    - port: 80
-      targetPort: 9090
-      protocol: TCP
+  - name: "http"
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
   selector:
-    application: prometheus
+    app.kubernetes.io/name: kube-state-metrics
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    component: "alertmanager"
+    app: prometheus
+  name: prometheus-alertmanager
+  namespace: kube-system
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 9093
+  selector:
+    component: "alertmanager"
+    app: prometheus
+  sessionAffinity: None
+  type: "ClusterIP"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: "true"
+  labels:
+    component: "node-exporter"
+    app: prometheus
+  name: prometheus-node-exporter
+  namespace: kube-system
+spec:
+  clusterIP: None
+  ports:
+    - name: metrics
+      port: 9100
+      protocol: TCP
+      targetPort: 9100
+  selector:
+    component: "node-exporter"
+    app: prometheus
+  type: "ClusterIP"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/probe: pushgateway
+  labels:
+    component: "pushgateway"
+    app: prometheus
+  name: prometheus-pushgateway
+  namespace: kube-system
+spec:
+  ports:
+    - name: http
+      port: 9091
+      protocol: TCP
+      targetPort: 9091
+  selector:
+    component: "pushgateway"
+    app: prometheus
+  type: "ClusterIP"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    component: "server"
+    app: prometheus
+  name: prometheus-server
+  namespace: kube-system
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 9090
+  selector:
+    component: "server"
+    app: prometheus
+  sessionAffinity: None
+  type: "ClusterIP"
