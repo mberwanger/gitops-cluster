@@ -3,4 +3,4 @@ kind: Kustomization
 commonLabels:
   clusterLabel1: someValue1
 resources:
-  - ../../base/cluster
+  - ../../common/cluster
