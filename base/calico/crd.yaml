@@ -13,9 +13,7 @@ spec:
     kind: FelixConfiguration
     plural: felixconfigurations
     singular: felixconfiguration
-
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -31,9 +29,7 @@ spec:
     kind: IPAMBlock
     plural: ipamblocks
     singular: ipamblock
-
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -49,9 +45,7 @@ spec:
     kind: BlockAffinity
     plural: blockaffinities
     singular: blockaffinity
-
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -85,7 +79,6 @@ spec:
     plural: bgppeers
     singular: bgppeer
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -101,9 +94,7 @@ spec:
     kind: IPPool
     plural: ippools
     singular: ippool
-
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -119,9 +110,7 @@ spec:
     kind: HostEndpoint
     plural: hostendpoints
     singular: hostendpoint
-
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
