@@ -12,7 +12,7 @@ data:
 apiVersion: source.toolkit.fluxcd.io/v1alpha1
 kind: GitRepository
 metadata:
-  name: cluster-repo
+  name: cluster1-repo
   namespace: gitops-system
 spec:
   interval: 1m0s
@@ -25,7 +25,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1alpha1
 kind: Kustomization
 metadata:
-  name: cluster1-iad-nonprod
+  name: cluster1-nonprod
   namespace: gitops-system
 spec:
   interval: 5m
@@ -33,4 +33,4 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: cluster-repo
+    name: cluster1-repo
