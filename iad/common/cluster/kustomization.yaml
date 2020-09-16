@@ -1,9 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../../base/calico
+  # - ../../../base/calico
   - ../../../base/metrics-server
-  - ../../../base/datadog
+  # - ../../../base/datadog
   - ../../../base/defaults
-  - ../../../base/psp
+  # - ../../../base/psp
   - ../../../base/cron
