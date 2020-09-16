@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: metrics-server
+  namespace: kube-system
   labels:
     k8s-app: metrics-server
 spec:
@@ -21,7 +22,7 @@ spec:
         emptyDir: {}
       containers:
       - name: metrics-server
-        image: k8s.gcr.io/metrics-server-amd64:v0.3.6
+        image: k8s.gcr.io/metrics-server/metrics-server:v0.3.7
         imagePullPolicy: IfNotPresent
         args:
           - --cert-dir=/tmp
@@ -39,4 +40,3 @@ spec:
           mountPath: /tmp
       nodeSelector:
         kubernetes.io/os: linux
-        kubernetes.io/arch: "amd64"
