@@ -27,6 +27,9 @@ spec:
         args:
           - --cert-dir=/tmp
           - --secure-port=4443
+          - --kubelet-insecure-tls
+          - --kubelet-preferred-address-types=InternalIP
+          # remove kubelet-insecure-tls and kubelet-preferred-address-types (fix kind)
         ports:
         - name: main-port
           containerPort: 4443
