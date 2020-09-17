@@ -2,7 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: developer
-  namespace: product-3
+  namespace: project-3
 subjects:
 - kind: Group
   name: team3:developer

@@ -27,9 +27,9 @@ metadata:
 spec:
   serviceAccount:
     name: flux-reconciler
-    namespace: product-1
+    namespace: project-1
   interval: 2m30s
-  path: ./iad/nonprod/product-1
+  path: ./iad/nonprod/project-1
   prune: true
   sourceRef:
     kind: GitRepository
