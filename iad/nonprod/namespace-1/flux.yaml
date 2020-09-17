@@ -25,6 +25,9 @@ kind: Kustomization
 metadata:
   name: namespace1-kustomization
 spec:
+  serviceAccount:
+    name: flux:reconciler
+    namespace: namespace-1
   interval: 2m30s
   path: ./iad/nonprod/namespace-1
   prune: true
