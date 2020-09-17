@@ -94,5 +94,9 @@ rules:
   verbs:
   - create
   - delete
+  - get
+  - list
+  - delete
   - patch
   - update
+  - watch
