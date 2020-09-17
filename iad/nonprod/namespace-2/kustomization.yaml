@@ -5,3 +5,4 @@ commonLabels:
   namespaceLabel1: someValue1
 resources:
   - namespace.yaml
+  - rbac.yaml
