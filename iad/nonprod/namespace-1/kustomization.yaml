@@ -5,5 +5,5 @@ commonLabels:
   namespaceLabel1: someValue1
 resources:
   - namespace.yaml
-  - flux.yaml
   - rbac.yaml
+  - flux.yaml
